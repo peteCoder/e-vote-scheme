@@ -3,6 +3,7 @@
 # Update pip
 echo "Updating pip..."
 python3  pip install -U pip
+python3 -m pip install --upgrade pip
 
 # Install dependencies
 

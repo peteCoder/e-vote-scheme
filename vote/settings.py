@@ -29,8 +29,8 @@ SECRET_KEY = "django-insecure-h$9py)l-41j3-&e0w==f2d%88c0t92r+$-4*==-5%pu+2ru+74
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*", ".vercel.app"]
 
+ALLOWED_HOSTS = ["*"]
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = config('SMTP_SERVER')
@@ -63,6 +63,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+
+
 
 ROOT_URLCONF = "vote.urls"
 
@@ -147,19 +150,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
-STATIC_URL = "/static/"
-
-
-
-MEDIA_URL = '/media/'
-
 # TODO: Update the default file storage when online
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 
 # Default primary key field type
